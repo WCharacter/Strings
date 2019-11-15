@@ -137,7 +137,7 @@ string get_string(const string& str, uint32_t &i, uint32_t chars_amount)
 bool is_readable_char(const char ch)
 {
 	int v = static_cast<int>(ch);
-	if (!(v > 32 && v < 127))
+	if (!(v > 31 && v < 127))
 	{
 		return false;
 	}	
