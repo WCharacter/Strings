@@ -65,6 +65,12 @@ optional<pair<uint32_t, string>> get_chars_amount(int argc, char* argv[])
 		("file", po::value<string>(&data_pair.second), "Choose filename")
 		("offset", "Print nummber of byte");
 
+	if (argc < 2)
+	{
+		desc.print(cout);
+		return {};
+	}
+
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc, argv, desc), vm);
 	po::notify(vm);
@@ -120,7 +126,7 @@ void get_strings(vector<string_data>& vec,  uint32_t chars_amount, string filena
 string get_string(const string& str, uint32_t &i, uint32_t chars_amount)
 {
 	string result;
-	for (;; ++i)
+	for (;i < str.length(); ++i)
 	{
 		if (is_readable_char(str[i]))
 		{
